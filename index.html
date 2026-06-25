@@ -2,171 +2,919 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Level5ive Consulting</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
+<title>Level 5ive Consulting — AI-Assisted SPM</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-body {
-  margin:0;
-  font-family:'Inter', sans-serif;
-  color:#1a1a1a;
-}
+  :root {
+    --red: #e91d2d;
+    --navy: #2B2F8F;
+    --navy-dark: #1e2266;
+    --navy-light: #3d43b0;
+    --white: #ffffff;
+    --off-white: #f7f8fc;
+    --gray: #6b7280;
+    --light-gray: #e8eaf2;
+    --text: #1a1a2e;
+  }
 
-/* HEADER */
-header {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 40px;
-}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-header img { height:50px; }
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    background: var(--white);
+  }
 
-nav a {
-  margin-left:25px;
-  text-decoration:none;
-  font-weight:600;
-  color:#1a1a1a;
-}
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 72px;
+    background: rgba(27, 30, 80, 0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
 
-/* HERO */
-.hero {
-  text-align:center;
-  padding:120px 20px 80px;
-}
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
 
-.hero h1 {
-  font-size:42px;
-  max-width:800px;
-  margin:auto;
-}
+  .nav-logo img {
+    height: 36px;
+    width: auto;
+  }
 
-.hero p {
-  margin-top:15px;
-  font-size:18px;
-  color:#555;
-}
+  .nav-logo span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.02em;
+  }
 
-/* BUTTONS */
-.buttons {
-  margin-top:25px;
-}
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
 
-.btn {
-  margin:10px;
-  padding:12px 22px;
-  font-weight:600;
-  cursor:pointer;
-}
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
 
-.primary {
-  background:#e91d2d;
-  color:white;
-  border:none;
-}
+  .nav-links a:hover { color: white; }
 
-.secondary {
-  border:2px solid #1a1a1a;
-  background:white;
-}
+  .nav-cta {
+    background: var(--red);
+    color: white !important;
+    padding: 10px 22px;
+    border-radius: 4px;
+    transition: background 0.2s !important;
+  }
 
-/* SECTION */
-.section {
-  max-width:1100px;
-  margin:auto;
-  padding:70px 20px;
-}
+  .nav-cta:hover { background: #c4121f !important; color: white !important; }
 
-/* GRID */
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:25px;
-}
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy-dark);
+    display: flex;
+    align-items: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
 
-.card {
-  border:1px solid #eee;
-  padding:25px;
-  border-radius:10px;
-  text-align:center;
-  background:white;
-}
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 40%, rgba(233,29,45,0.06) 100%);
+    pointer-events: none;
+  }
 
-.card h3 {
-  color:#e91d2d;
-}
+  .hero-road {
+    position: absolute;
+    bottom: 0; right: -100px;
+    width: 600px;
+    opacity: 0.04;
+    pointer-events: none;
+  }
 
-/* BANNER */
-.banner-footer img {
-  width:100%;
-  display:block;
-}
+  .hero-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
 
-/* FOOTER */
-.footer {
-  text-align:center;
-  padding:30px;
-  background:#f2f3f6;
-}
+  .hero-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 68px;
+    font-weight: 700;
+    line-height: 1.0;
+    color: white;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 span { color: var(--red); }
+
+  .hero-sub {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 40px;
+    max-width: 480px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--red);
+    color: white;
+    padding: 14px 28px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: #c4121f; transform: translateY(-1px); }
+
+  .btn-outline {
+    border: 1.5px solid rgba(255,255,255,0.35);
+    color: white;
+    padding: 14px 28px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: border-color 0.2s, background 0.2s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover {
+    border-color: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.05);
+  }
+
+  /* Hero stats */
+  .hero-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .stat-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 24px 28px;
+    border-left: 3px solid var(--red);
+  }
+
+  .stat-number {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 6px;
+    font-weight: 400;
+  }
+
+  /* SECTION COMMON */
+  section {
+    padding: 96px 48px;
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--navy-dark);
+    margin-bottom: 20px;
+  }
+
+  .section-subtitle {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--gray);
+    max-width: 600px;
+    margin-bottom: 56px;
+  }
+
+  /* THE 5 ACTS */
+  .acts-section {
+    background: var(--off-white);
+  }
+
+  .acts-track {
+    position: relative;
+    display: flex;
+    gap: 0;
+    margin-top: 16px;
+  }
+
+  .acts-track::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 48px;
+    right: 48px;
+    height: 2px;
+    background: var(--light-gray);
+    z-index: 0;
+  }
+
+  .act-item {
+    flex: 1;
+    text-align: center;
+    padding: 0 12px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .act-node {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid var(--light-gray);
+    background: white;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--navy);
+    transition: all 0.3s;
+    cursor: default;
+  }
+
+  .act-item.active .act-node,
+  .act-item:hover .act-node {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: white;
+    transform: scale(1.1);
+  }
+
+  .act-item.highlight .act-node {
+    background: var(--red);
+    border-color: var(--red);
+    color: white;
+  }
+
+  .act-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy-dark);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .act-desc {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+
+  .acts-callout {
+    margin-top: 48px;
+    background: var(--navy-dark);
+    color: white;
+    border-radius: 8px;
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .acts-callout-text {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .acts-callout-text strong {
+    color: var(--red);
+    font-weight: 600;
+  }
+
+  /* THREE ASSETS */
+  .assets-section {
+    background: white;
+  }
+
+  .assets-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+
+  .asset-card {
+    padding: 32px;
+    border: 1px solid var(--light-gray);
+    border-radius: 8px;
+    border-top: 3px solid var(--navy);
+  }
+
+  .asset-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--off-white);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+
+  .asset-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--navy-dark);
+    margin-bottom: 10px;
+  }
+
+  .asset-card p {
+    font-size: 15px;
+    color: var(--gray);
+    line-height: 1.65;
+  }
+
+  .assets-connector {
+    text-align: center;
+    padding: 32px;
+    background: var(--red);
+    border-radius: 8px;
+    color: white;
+  }
+
+  .assets-connector p {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .assets-connector strong { font-weight: 600; }
+
+  /* PILLARS PREVIEW */
+  .pillars-section {
+    background: var(--navy-dark);
+  }
+
+  .pillars-section .section-title { color: white; }
+  .pillars-section .section-subtitle { color: rgba(255,255,255,0.6); }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .pillar-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 28px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .pillar-card:hover {
+    background: rgba(255,255,255,0.09);
+    border-color: rgba(255,255,255,0.2);
+  }
+
+  .pillar-number {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--red);
+    line-height: 1;
+    margin-bottom: 12px;
+    opacity: 0.8;
+  }
+
+  .pillar-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 10px;
+  }
+
+  .pillar-card p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+  }
+
+  .pillar-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 14px;
+  }
+
+  .tag {
+    background: rgba(233,29,45,0.15);
+    border: 1px solid rgba(233,29,45,0.3);
+    color: #ff8090;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 3px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .pillars-cta {
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  /* PROOF SECTION */
+  .proof-section {
+    background: white;
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+  }
+
+  .comparison-table th {
+    padding: 16px 24px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gray);
+    border-bottom: 1px solid var(--light-gray);
+  }
+
+  .comparison-table th:nth-child(3) {
+    background: var(--navy-dark);
+    color: white;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .comparison-table td {
+    padding: 18px 24px;
+    font-size: 15px;
+    line-height: 1.5;
+    border-bottom: 1px solid var(--light-gray);
+    vertical-align: top;
+  }
+
+  .comparison-table td:nth-child(1) {
+    font-weight: 600;
+    color: var(--navy-dark);
+    width: 18%;
+  }
+
+  .comparison-table td:nth-child(2) {
+    color: var(--gray);
+    width: 38%;
+  }
+
+  .comparison-table td:nth-child(3) {
+    background: rgba(43,47,143,0.04);
+    color: var(--navy-dark);
+    font-weight: 500;
+    width: 44%;
+    border-left: 3px solid var(--navy);
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--red);
+    padding: 80px 48px;
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 16px;
+  }
+
+  .cta-section p {
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 36px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-white {
+    background: white;
+    color: var(--red);
+    padding: 16px 36px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 4px;
+    display: inline-block;
+    transition: transform 0.15s, opacity 0.2s;
+  }
+
+  .btn-white:hover { transform: translateY(-2px); opacity: 0.93; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy-dark);
+    padding: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .footer-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+  }
+
+  .footer-contact {
+    text-align: right;
+  }
+
+  .footer-contact a {
+    display: block;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 4px;
+    transition: color 0.2s;
+  }
+
+  .footer-contact a:hover { color: white; }
+
+  .footer-copy {
+    color: rgba(255,255,255,0.3);
+    font-size: 12px;
+    width: 100%;
+    text-align: center;
+    margin-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 24px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .hero-content { grid-template-columns: 1fr; gap: 40px; }
+    .hero h1 { font-size: 44px; }
+    section { padding: 64px 24px; }
+    .assets-grid { grid-template-columns: 1fr; }
+    .acts-track { flex-direction: column; align-items: flex-start; gap: 24px; }
+    .acts-track::before { display: none; }
+    .act-item { text-align: left; display: flex; align-items: flex-start; gap: 20px; }
+    .act-node { margin: 0; flex-shrink: 0; }
+    .comparison-table { font-size: 13px; }
+    .comparison-table td, .comparison-table th { padding: 12px 14px; }
+    footer { padding: 32px 24px; }
+    .footer-contact { text-align: left; }
+  }
 </style>
 </head>
-
 <body>
 
-<header>
-  <a href="index.html">
-    <img src="logo.png" alt="Level5ive Consulting">
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.jpg" alt="Level 5ive">
+    <span>Level 5ive Consulting</span>
   </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="model.html">The Model</a></li>
+    <li><a href="foundation.html">The Foundation</a></li>
+    <li><a href="pillars.html">7 Pillars</a></li>
+    <li><a href="engagement.html" class="nav-cta">Start a Conversation</a></li>
+  </ul>
+</nav>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="model.html">Model</a>
-    <a href="engagement.html">Engagement</a>
-  </nav>
-</header>
-
+<!-- HERO -->
 <section class="hero">
-  <h1>Every SPM transformation follows the same 5 acts.</h1>
-  <p>From leadership anxiety to measurable outcomes—with AI for SPM.</p>
-
-  <div class="buttons">
-    <a href="model.html">
-      <button class="btn primary">Explore the Model</button>
-    </a>
-
-    <a href="engagement.html">
-      <button class="btn secondary">Start a Conversation</button>
-    </a>
+  <div class="hero-content">
+    <div>
+      <p class="hero-eyebrow">AI-Assisted Strategic Portfolio Management</p>
+      <h1>You've built the foundation.<br><span>AI unlocks its full potential.</span></h1>
+      <p class="hero-sub">Most enterprises have the right tools, people, and processes in place. What's missing is the AI intelligence layer that makes all three perform together — at a level no team can reach through effort alone.</p>
+      <div class="hero-actions">
+        <a href="model.html" class="btn-primary">Explore the Model</a>
+        <a href="engagement.html" class="btn-outline">Start a Conversation</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Assets already in place — tools, people, and process</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">7</div>
+        <div class="stat-label">AI pillars that multiply their combined impact</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">1</div>
+        <div class="stat-label">Shift — from reactive management to predictive intelligence</div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="section">
-  <h2 style="text-align:center;">The 5 Acts</h2>
+<!-- THE 5 ACTS -->
+<section class="acts-section">
+  <div class="section-inner">
+    <p class="section-eyebrow">The Journey</p>
+    <h2 class="section-title">Every SPM transformation<br>follows the same 5 acts.</h2>
+    <p class="section-subtitle">Where are you today? Level 5ive deploys AI at the exact point where transformation either happens — or stalls.</p>
 
-  <div class="grid">
-    <div class="card"><h3>Act 1</h3><p>Leader Anxiety</p></div>
-    <div class="card"><h3>Act 2</h3><p>Operator Grind</p></div>
-    <div class="card"><h3>Act 3</h3><p>Hero Moment</p></div>
-    <div class="card"><h3>Act 4</h3><p>Value</p></div>
-    <div class="card"><h3>Act 5</h3><p>Outcome</p></div>
+    <div class="acts-track">
+      <div class="act-item">
+        <div class="act-node">1</div>
+        <div>
+          <p class="act-label">Anxiety</p>
+          <p class="act-desc">Data exists but isn't trusted. Strategy and execution feel disconnected.</p>
+        </div>
+      </div>
+      <div class="act-item">
+        <div class="act-node">2</div>
+        <div>
+          <p class="act-label">Grind</p>
+          <p class="act-desc">Teams burn cycles on manual reporting instead of driving outcomes.</p>
+        </div>
+      </div>
+      <div class="act-item highlight">
+        <div class="act-node">3</div>
+        <div>
+          <p class="act-label">AI Ignition</p>
+          <p class="act-desc">AI activates your data and amplifies your people. This is where we start.</p>
+        </div>
+      </div>
+      <div class="act-item">
+        <div class="act-node">4</div>
+        <div>
+          <p class="act-label">Value Proof</p>
+          <p class="act-desc">Decisions accelerate. Data is trusted. Processes sharpen around real signals.</p>
+        </div>
+      </div>
+      <div class="act-item">
+        <div class="act-node">5</div>
+        <div>
+          <p class="act-label">ROI Realized</p>
+          <p class="act-desc">Measurable outcomes. Leadership confidence. The original anxiety is gone.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="acts-callout">
+      <div class="acts-callout-text">
+        Most organizations are somewhere between Acts 1 and 3. Level 5ive <strong>accelerates the path to Act 5</strong> — using the tools, people, and processes already in place.
+      </div>
+      <a href="model.html" class="btn-primary">See the Full Model</a>
+    </div>
   </div>
 </section>
 
-<section class="section">
-  <h2>Where I Come In</h2>
-  <p><strong>I operate between Act 2 and Act 3</strong>—where transformation either happens or stalls.</p>
+<!-- THREE ASSETS -->
+<section class="assets-section">
+  <div class="section-inner">
+    <p class="section-eyebrow">The Level 5ive Model</p>
+    <h2 class="section-title">AI doesn't replace what you've built.<br>It multiplies it.</h2>
+    <p class="section-subtitle">Organizations spend years building SPM capability. The gap isn't investment — it's intelligence.</p>
+
+    <div class="assets-grid">
+      <div class="asset-card">
+        <div class="asset-icon">🛠</div>
+        <h3>Your Tools</h3>
+        <p>Planview, ServiceNow, Jira, Clarity — generating data you're not fully leveraging yet. AI connects your existing stack continuously.</p>
+      </div>
+      <div class="asset-card">
+        <div class="asset-icon">👥</div>
+        <h3>Your People</h3>
+        <p>Experienced PMs, analysts, and EPMO leaders with institutional knowledge that isn't scaling. AI embeds their judgment into every workflow.</p>
+      </div>
+      <div class="asset-card">
+        <div class="asset-icon">⚙️</div>
+        <h3>Your Process</h3>
+        <p>Governance frameworks, delivery standards, and operating rhythms built over years. AI turns static snapshots into continuously updated models.</p>
+      </div>
+    </div>
+
+    <div class="assets-connector">
+      <p>The missing ingredient isn't more software, more headcount, or more governance. It's <strong>AI — specifically, the kind that works continuously across your existing stack</strong>, surfacing what human teams can't see at scale.</p>
+    </div>
+  </div>
 </section>
 
-<!-- Banner at bottom -->
-<div class="banner-footer">
-  <img src="banner.jpg" alt="Level5ive Banner">
-</div>
+<!-- 7 PILLARS PREVIEW -->
+<section class="pillars-section">
+  <div class="section-inner">
+    <p class="section-eyebrow" style="color: rgba(255,255,255,0.5);">AI Methodology</p>
+    <h2 class="section-title">7 pillars. Every domain covered.</h2>
+    <p class="section-subtitle">How AI amplifies tools, people, and process across the entire portfolio — with specific methods, not vague promises.</p>
 
-<div class="footer">
-  <p>Greg Stellflue | Level5ive Consulting</p>
-</div>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-number">01</div>
+        <h3>Portfolio Value & Strategic Alignment</h3>
+        <p>Real-time NLP drift detection across the live portfolio — not quarterly keyword mapping.</p>
+        <div class="pillar-tags"><span class="tag">NLP</span><span class="tag">Cluster Analysis</span></div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-number">02</div>
+        <h3>Capacity & Resource Planning</h3>
+        <p>Queuing models predict team-level overload before it materializes — mathematically, not subjectively.</p>
+        <div class="pillar-tags"><span class="tag">Erlang Models</span><span class="tag">Queuing Theory</span></div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-number">03</div>
+        <h3>Risk & Predictive Delivery</h3>
+        <p>Daily Monte Carlo outputs a true probability of on-time delivery. P(completion ≤ target) = 82%.</p>
+        <div class="pillar-tags"><span class="tag">Monte Carlo</span><span class="tag">Survival Analysis</span></div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-number">04</div>
+        <h3>Operational Metrics & Process Control</h3>
+        <p>Statistical Process Control distinguishes noise from signal — only real anomalies surface to leadership.</p>
+        <div class="pillar-tags"><span class="tag">SPC</span><span class="tag">UCL/LCL</span></div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-number">05</div>
+        <h3>Talent Elevation & Maturity</h3>
+        <p>AI coaches each PM on their specific estimation blind spots — in real time, not at annual reviews.</p>
+        <div class="pillar-tags"><span class="tag">Regression Analysis</span><span class="tag">Contextual AI</span></div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-number">06</div>
+        <h3>Financial Precision & Dynamic Forecasting</h3>
+        <p>Continuous Bayesian forecasting tied live to delivery signals — your CFO is never working from last month's numbers.</p>
+        <div class="pillar-tags"><span class="tag">Bayesian</span><span class="tag">ARIMA/Prophet</span></div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-number">07</div>
+        <h3>Business Outcome & Value Realization</h3>
+        <p>Causal inference isolates and proves the SPM-driven impact in board-ready terms — not just compelling stories.</p>
+        <div class="pillar-tags"><span class="tag">Causal Inference</span><span class="tag">Digital Twin</span></div>
+      </div>
+    </div>
+
+    <div class="pillars-cta">
+      <a href="pillars.html" class="btn-primary">Explore All 7 Pillars</a>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="proof-section">
+  <div class="section-inner">
+    <p class="section-eyebrow">Same Foundation. Different Outcomes.</p>
+    <h2 class="section-title">What changes when AI<br>is in the room.</h2>
+    <p class="section-subtitle">The organizations on the right haven't replaced their tools, restructured their teams, or rewritten their processes.</p>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Domain</th>
+          <th>Without AI</th>
+          <th>With Level 5ive AI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Strategic Alignment</td>
+          <td>Quarterly keyword mapping of projects to strategic pillars</td>
+          <td>Real-time NLP drift detection across the entire live portfolio</td>
+        </tr>
+        <tr>
+          <td>Capacity Planning</td>
+          <td>Experienced PMs flag overload — after it's already causing pain</td>
+          <td>Queuing models predict team-level overload before it materializes</td>
+        </tr>
+        <tr>
+          <td>Delivery Risk</td>
+          <td>Weekly RAG status updates based on PM judgment</td>
+          <td>Daily Monte Carlo outputs a true probability of on-time delivery</td>
+        </tr>
+        <tr>
+          <td>Metrics</td>
+          <td>Velocity dips trigger leadership escalation and process reviews</td>
+          <td>SPC distinguishes noise from signal — only real anomalies surface</td>
+        </tr>
+        <tr>
+          <td>PM Development</td>
+          <td>Annual training and mentoring from senior staff when available</td>
+          <td>AI coaches each PM on their specific blind spots in real time</td>
+        </tr>
+        <tr>
+          <td>Financial Forecast</td>
+          <td>Finance teams update EAC manually based on PM-reported status</td>
+          <td>Continuous Bayesian forecasting tied live to delivery signals</td>
+        </tr>
+        <tr>
+          <td>Value Proof</td>
+          <td>EPMO tells a compelling story — but can't prove causation</td>
+          <td>Causal inference isolates and proves the SPM-driven impact</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>You've built the foundation.<br>Let's activate it.</h2>
+  <p>Level 5ive Consulting works with enterprise EPMOs to deploy the AI intelligence that makes your existing tools, people, and processes perform at their full potential.</p>
+  <a href="engagement.html" class="btn-white">Start the Conversation</a>
+</section>
+
+<footer>
+  <div class="footer-brand">Level 5ive Consulting</div>
+  <div class="footer-contact">
+    <a href="mailto:greg.stellflue@level5iveconsulting.com">greg.stellflue@level5iveconsulting.com</a>
+    <a href="tel:4147581499">414-758-1499</a>
+  </div>
+  <p class="footer-copy">© 2025 Level 5ive Consulting · Greg Stellflue</p>
+</footer>
 
 </body>
 </html>

@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Foundation — Level 5ive Consulting</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #e91d2d;
+    --navy: #2B2F8F;
+    --navy-dark: #1e2266;
+    --white: #ffffff;
+    --off-white: #f7f8fc;
+    --gray: #6b7280;
+    --light-gray: #e8eaf2;
+    --text: #1a1a2e;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 72px;
+    background: rgba(27, 30, 80, 0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-logo img { height: 36px; width: auto; }
+  .nav-logo span { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 700; color: white; letter-spacing: 0.02em; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.75); text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: white; }
+  .nav-cta { background: var(--red) !important; color: white !important; padding: 10px 22px; border-radius: 4px; }
+
+  /* HEADER */
+  .page-header { background: var(--navy-dark); padding: 140px 48px 80px; }
+  .page-header-inner { max-width: 1100px; margin: 0 auto; }
+  .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); margin-bottom: 20px; }
+  .page-header h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 64px; font-weight: 700; color: white; line-height: 1.0; margin-bottom: 20px; }
+  .page-header p { font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 680px; }
+
+  /* DIAGRAM BAND */
+  .diagram-band {
+    background: var(--off-white);
+    border-bottom: 1px solid var(--light-gray);
+    padding: 56px 48px;
+  }
+  .diagram-inner { max-width: 1100px; margin: 0 auto; }
+
+  .model-diagram {
+    display: grid;
+    grid-template-columns: 1fr 48px 1fr 48px 1fr 48px 1fr;
+    align-items: center;
+    gap: 0;
+  }
+
+  .diagram-node {
+    border-radius: 8px;
+    padding: 24px 20px;
+    text-align: center;
+  }
+
+  .diagram-node.asset {
+    background: white;
+    border: 1.5px solid var(--light-gray);
+  }
+
+  .diagram-node.ai {
+    background: var(--navy-dark);
+    border: 1.5px solid var(--navy);
+  }
+
+  .diagram-node.result {
+    background: var(--red);
+    border: 1.5px solid var(--red);
+  }
+
+  .diagram-node .node-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  .diagram-node .node-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .diagram-node.asset .node-label { color: var(--navy-dark); }
+  .diagram-node.ai .node-label { color: white; }
+  .diagram-node.result .node-label { color: white; }
+
+  .diagram-node .node-sub {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .diagram-node.asset .node-sub { color: var(--gray); }
+  .diagram-node.ai .node-sub { color: rgba(255,255,255,0.55); }
+  .diagram-node.result .node-sub { color: rgba(255,255,255,0.8); }
+
+  .diagram-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: var(--light-gray);
+    font-weight: 300;
+  }
+
+  /* ASSET SECTIONS */
+  .asset-section {
+    padding: 80px 48px;
+    border-bottom: 1px solid var(--light-gray);
+  }
+
+  .asset-section:nth-child(even) { background: var(--off-white); }
+  .asset-section:nth-child(odd) { background: white; }
+
+  .asset-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 72px;
+    align-items: start;
+  }
+
+  .asset-left {}
+
+  .asset-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--off-white);
+    border: 1px solid var(--light-gray);
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 20px;
+  }
+
+  .asset-tag.tools-tag { background: rgba(233,29,45,0.05); border-color: rgba(233,29,45,0.2); color: var(--red); }
+  .asset-tag.people-tag { background: rgba(43,47,143,0.06); border-color: rgba(43,47,143,0.2); color: var(--navy); }
+  .asset-tag.process-tag { background: rgba(0,0,0,0.04); border-color: var(--light-gray); color: var(--text); }
+  .asset-tag.ai-tag { background: var(--navy-dark); border-color: var(--navy); color: rgba(255,255,255,0.8); }
+
+  .asset-left h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--navy-dark);
+    line-height: 1.0;
+    margin-bottom: 16px;
+  }
+
+  .asset-left .asset-headline {
+    font-size: 16px;
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .asset-platforms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .platform-pill {
+    background: white;
+    border: 1px solid var(--light-gray);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy-dark);
+  }
+
+  .asset-section:nth-child(even) .platform-pill { background: var(--off-white); }
+
+  .asset-right {}
+
+  .insight-box {
+    background: var(--navy-dark);
+    border-radius: 8px;
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    border-left: 3px solid var(--red);
+  }
+
+  .insight-box p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  .insight-box p strong { color: white; font-weight: 600; }
+
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .detail-card {
+    border: 1px solid var(--light-gray);
+    border-radius: 8px;
+    padding: 20px 22px;
+    background: white;
+  }
+
+  .asset-section:nth-child(even) .detail-card { background: white; }
+
+  .detail-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy-dark);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 12px;
+  }
+
+  .detail-card p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.65;
+  }
+
+  .gap-statement {
+    margin-top: 24px;
+    padding: 20px 24px;
+    border-radius: 6px;
+    background: rgba(233,29,45,0.05);
+    border: 1px solid rgba(233,29,45,0.15);
+    border-left: 3px solid var(--red);
+  }
+
+  .gap-statement .gap-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 6px;
+  }
+
+  .gap-statement p {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.65;
+  }
+
+  /* AI INTELLIGENCE SECTION */
+  .ai-section {
+    background: var(--navy-dark);
+    padding: 96px 48px;
+  }
+
+  .ai-inner { max-width: 1100px; margin: 0 auto; }
+
+  .ai-section .eyebrow { color: rgba(255,255,255,0.4); }
+  .ai-section h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 16px;
+  }
+
+  .ai-section .lead {
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    max-width: 680px;
+    margin-bottom: 56px;
+  }
+
+  .ai-capabilities {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 56px;
+  }
+
+  .ai-cap-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 32px 28px;
+  }
+
+  .ai-cap-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(233,29,45,0.15);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .ai-cap-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 12px;
+  }
+
+  .ai-cap-card p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+  }
+
+  .ai-multiplier {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .multiplier-item {}
+
+  .multiplier-item h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .multiplier-arrow {
+    color: var(--red);
+    font-size: 20px;
+  }
+
+  .multiplier-item p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+  }
+
+  /* THE GAP SECTION */
+  .gap-section {
+    padding: 80px 48px;
+    background: white;
+  }
+
+  .gap-inner { max-width: 1100px; margin: 0 auto; }
+
+  .gap-inner .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 48px; font-weight: 700; color: var(--navy-dark);
+    margin-bottom: 16px;
+  }
+
+  .gap-inner .section-sub {
+    font-size: 17px; font-weight: 300; color: var(--gray);
+    line-height: 1.7; max-width: 640px; margin-bottom: 48px;
+  }
+
+  .gap-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+
+  .col-header {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+
+  .col-header.invested { color: var(--gray); }
+  .col-header.missing { color: var(--red); }
+
+  .gap-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .gap-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .gap-list li::before {
+    content: '✓';
+    color: var(--navy);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .gap-list.missing li::before { content: '×'; color: var(--red); }
+
+  .gap-resolution {
+    background: var(--navy-dark);
+    border-radius: 10px;
+    padding: 40px 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .gap-resolution p {
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.7;
+  }
+
+  .gap-resolution p strong { color: white; font-weight: 600; }
+
+  .btn-primary {
+    background: var(--red); color: white; padding: 14px 28px;
+    font-size: 15px; font-weight: 600; text-decoration: none;
+    border-radius: 4px; white-space: nowrap;
+    transition: background 0.2s; display: inline-block;
+  }
+  .btn-primary:hover { background: #c4121f; }
+
+  /* PAGE CTA */
+  .page-cta { background: var(--red); padding: 64px 48px; text-align: center; }
+  .page-cta h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 44px; font-weight: 700; color: white; margin-bottom: 12px; }
+  .page-cta p { font-size: 17px; color: rgba(255,255,255,0.8); margin-bottom: 28px; font-weight: 300; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .btn-white { background: white; color: var(--red); padding: 14px 32px; font-size: 15px; font-weight: 700; text-decoration: none; border-radius: 4px; display: inline-block; transition: transform 0.15s; }
+  .btn-white:hover { transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer { background: var(--navy-dark); padding: 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-brand { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 700; color: white; }
+  .footer-contact a { display: block; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; margin-bottom: 4px; text-align: right; }
+  .footer-copy { color: rgba(255,255,255,0.3); font-size: 12px; width: 100%; text-align: center; margin-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .page-header { padding: 110px 24px 60px; }
+    .page-header h1 { font-size: 40px; }
+    .diagram-band { padding: 40px 24px; }
+    .model-diagram { grid-template-columns: 1fr; gap: 8px; }
+    .diagram-arrow { transform: rotate(90deg); height: 24px; }
+    .asset-section { padding: 56px 24px; }
+    .asset-inner { grid-template-columns: 1fr; gap: 36px; }
+    .detail-grid { grid-template-columns: 1fr; }
+    .ai-section { padding: 64px 24px; }
+    .ai-capabilities { grid-template-columns: 1fr; }
+    .ai-multiplier { grid-template-columns: 1fr; }
+    .gap-section { padding: 56px 24px; }
+    .gap-two-col { grid-template-columns: 1fr; }
+    .gap-resolution { grid-template-columns: 1fr; }
+    footer { padding: 32px 24px; }
+    .footer-contact a { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.jpg" alt="Level 5ive">
+    <span>Level 5ive Consulting</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="model.html">The Model</a></li>
+    <li><a href="foundation.html">The Foundation</a></li>
+    <li><a href="pillars.html">7 Pillars</a></li>
+    <li><a href="engagement.html" class="nav-cta">Start a Conversation</a></li>
+  </ul>
+</nav>
+
+<!-- HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <p class="eyebrow">The Level 5ive Model — Deep Dive</p>
+    <h1>Tools. People. Process.<br>And the AI Layer<br>That Connects Them.</h1>
+    <p>Most enterprises have already made the right investments. The platforms are licensed. The people are hired. The processes are documented. This page explains exactly what each of those assets brings to the table — and precisely where AI creates the compound effect leadership has been waiting for.</p>
+  </div>
+</div>
+
+<!-- DIAGRAM -->
+<div class="diagram-band">
+  <div class="diagram-inner">
+    <div class="model-diagram">
+      <div class="diagram-node asset">
+        <div class="node-icon">🛠</div>
+        <div class="node-label">Tools</div>
+        <div class="node-sub">Planview, ServiceNow,<br>Jira, Clarity</div>
+      </div>
+      <div class="diagram-arrow">+</div>
+      <div class="diagram-node asset">
+        <div class="node-icon">👥</div>
+        <div class="node-label">People</div>
+        <div class="node-sub">PMs, Analysts,<br>EPMO Leaders</div>
+      </div>
+      <div class="diagram-arrow">+</div>
+      <div class="diagram-node asset">
+        <div class="node-icon">⚙️</div>
+        <div class="node-label">Process</div>
+        <div class="node-sub">Governance, Standards,<br>Operating Rhythms</div>
+      </div>
+      <div class="diagram-arrow">×</div>
+      <div class="diagram-node ai">
+        <div class="node-icon">🤖</div>
+        <div class="node-label" style="color:white;">AI Intelligence</div>
+        <div class="node-sub">The layer Level 5ive<br>deploys across all three</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOOLS SECTION -->
+<div class="asset-section">
+  <div class="asset-inner">
+    <div class="asset-left">
+      <span class="asset-tag tools-tag">Asset 1 of 3</span>
+      <h2>Your Tools</h2>
+      <p class="asset-headline">The platforms generating data you're not fully leveraging yet.</p>
+      <div class="asset-platforms">
+        <span class="platform-pill">Planview</span>
+        <span class="platform-pill">ServiceNow</span>
+        <span class="platform-pill">Jira</span>
+        <span class="platform-pill">Clarity</span>
+        <span class="platform-pill">Azure DevOps</span>
+        <span class="platform-pill">Rally</span>
+      </div>
+    </div>
+    <div class="asset-right">
+      <div class="insight-box">
+        <p>Your tools are already capturing an enormous volume of delivery data — task status, resource assignments, financial actuals, velocity metrics. <strong>The problem isn't that the data doesn't exist. The problem is nothing is connecting it intelligently.</strong></p>
+      </div>
+      <div class="detail-grid">
+        <div class="detail-card">
+          <h4>What Tools Do Well</h4>
+          <p>Capture structured data at scale. Track assignments, timelines, costs, and status across hundreds of projects simultaneously — data no human team could manually collect.</p>
+        </div>
+        <div class="detail-card">
+          <h4>What Tools Can't Do Alone</h4>
+          <p>Connect that data to strategic intent. Surface patterns across the portfolio. Predict what the data means for delivery outcomes six weeks from now.</p>
+        </div>
+        <div class="detail-card">
+          <h4>The Underutilization Gap</h4>
+          <p>Most enterprises use 20–30% of the analytical capability their platforms offer. The remainder is blocked by integration gaps, data quality issues, and lack of AI interpretation.</p>
+        </div>
+        <div class="detail-card">
+          <h4>What AI Adds</h4>
+          <p>Continuous cross-platform intelligence — NLP parsing live project data against strategy metadata, cluster analysis detecting capital over-concentration, real-time anomaly detection.</p>
+        </div>
+      </div>
+      <div class="gap-statement">
+        <p class="gap-label">The Gap</p>
+        <p>Organizations spend years implementing and configuring SPM platforms. The return on that investment is capped until an AI layer sits across the data those platforms generate — turning activity into insight continuously, not just at reporting cycles.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PEOPLE SECTION -->
+<div class="asset-section">
+  <div class="asset-inner">
+    <div class="asset-left">
+      <span class="asset-tag people-tag">Asset 2 of 3</span>
+      <h2>Your People</h2>
+      <p class="asset-headline">Experienced practitioners with institutional knowledge that isn't scaling.</p>
+      <div class="asset-platforms">
+        <span class="platform-pill">Portfolio Managers</span>
+        <span class="platform-pill">EPMO Leaders</span>
+        <span class="platform-pill">Project Managers</span>
+        <span class="platform-pill">Analysts</span>
+        <span class="platform-pill">Program Directors</span>
+      </div>
+    </div>
+    <div class="asset-right">
+      <div class="insight-box">
+        <p>Your most experienced PMs and analysts carry institutional knowledge built over years — pattern recognition, risk intuition, stakeholder context. <strong>That knowledge exists in a handful of people. AI makes it available at scale, embedded into every workflow, in real time.</strong></p>
+      </div>
+      <div class="detail-grid">
+        <div class="detail-card">
+          <h4>What People Do Well</h4>
+          <p>Judgment, context, and relationship intelligence. An experienced PM reads stakeholder dynamics and risk signals that no tool captures. That judgment is irreplaceable.</p>
+        </div>
+        <div class="detail-card">
+          <h4>What People Can't Do Alone</h4>
+          <p>Monitor everything simultaneously. A portfolio of 200+ projects generates more signals than any analyst team can track. Institutional knowledge doesn't transfer fast enough through mentoring alone.</p>
+        </div>
+        <div class="detail-card">
+          <h4>The Scaling Problem</h4>
+          <p>Junior PMs make the same estimation errors repeatedly because feedback loops are slow. Senior practitioners are stretched across too many initiatives to coach in real time.</p>
+        </div>
+        <div class="detail-card">
+          <h4>What AI Adds</h4>
+          <p>Regression analysis identifies each PM's specific estimation blind spots. Contextual AI guardrails deliver tailored coaching at the exact moment a decision is being made — not at a quarterly review.</p>
+        </div>
+      </div>
+      <div class="gap-statement">
+        <p class="gap-label">The Gap</p>
+        <p>The best SPM organizations have exceptional people. But exceptional people burn out on manual reporting instead of driving outcomes. AI eliminates the grind so practitioners can focus on the judgment that only humans can provide — while their expertise gets embedded into every AI-assisted workflow.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS SECTION -->
+<div class="asset-section">
+  <div class="asset-inner">
+    <div class="asset-left">
+      <span class="asset-tag process-tag">Asset 3 of 3</span>
+      <h2>Your Process</h2>
+      <p class="asset-headline">Governance frameworks and operating rhythms built over years of hard work.</p>
+      <div class="asset-platforms">
+        <span class="platform-pill">Stage Gates</span>
+        <span class="platform-pill">Risk Reviews</span>
+        <span class="platform-pill">Status Reporting</span>
+        <span class="platform-pill">Governance Cadences</span>
+        <span class="platform-pill">Delivery Standards</span>
+      </div>
+    </div>
+    <div class="asset-right">
+      <div class="insight-box">
+        <p>Your governance frameworks, delivery standards, and operating rhythms represent years of institutional learning. <strong>The problem isn't that your processes are wrong — it's that they're static in a dynamic environment.</strong> AI makes them continuously adaptive.</p>
+      </div>
+      <div class="detail-grid">
+        <div class="detail-card">
+          <h4>What Process Does Well</h4>
+          <p>Creates consistency, auditability, and shared language across the portfolio. Governance frameworks define how decisions get made and how accountability is structured.</p>
+        </div>
+        <div class="detail-card">
+          <h4>What Process Can't Do Alone</h4>
+          <p>Anticipate. Processes are built to handle known situations. They produce static snapshots — last week's status, last month's financials — not predictions about what's coming.</p>
+        </div>
+        <div class="detail-card">
+          <h4>The Static Snapshot Problem</h4>
+          <p>Monthly reporting cycles mean leadership is always working from data that's 2–4 weeks old. Risk reviews happen on schedule, not when risks actually emerge.</p>
+        </div>
+        <div class="detail-card">
+          <h4>What AI Adds</h4>
+          <p>Monte Carlo simulations run daily, not at review gates. SPC triggers governance only when metrics cross statistically significant thresholds. Bayesian forecasting updates EAC as delivery data arrives — not at month-end.</p>
+        </div>
+      </div>
+      <div class="gap-statement">
+        <p class="gap-label">The Gap</p>
+        <p>Well-designed processes are necessary but not sufficient. The connection between strategy and execution remains opaque when processes generate reports instead of predictions. AI doesn't replace your governance framework — it makes it continuously intelligent, so decisions happen based on what's about to happen rather than what already happened.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AI INTELLIGENCE SECTION -->
+<section class="ai-section">
+  <div class="ai-inner">
+    <p class="eyebrow">The Fourth Layer</p>
+    <h2>AI Intelligence:<br>What It Actually Does</h2>
+    <p class="lead">The AI intelligence layer doesn't replace your tools, people, or processes. It sits across all three — continuously — doing three things no combination of the first three assets can do on their own.</p>
+
+    <div class="ai-capabilities">
+      <div class="ai-cap-card">
+        <div class="ai-cap-icon">👁</div>
+        <h3>Sees What Teams Can't</h3>
+        <p>AI monitors the entire portfolio simultaneously — detecting drift, anomalies, and risk signals across thousands of data points that no analyst team can track manually. When a project quietly shifts away from strategic alignment, or when resource utilization is heading toward overload, AI surfaces it before it becomes a problem leadership has to react to.</p>
+      </div>
+      <div class="ai-cap-card">
+        <div class="ai-cap-icon">📈</div>
+        <h3>Predicts, Not Just Reports</h3>
+        <p>Instead of summarizing last week's activity, AI models calculate probability distributions of future outcomes. P(completion ≤ target) = 82% is a number leadership can act on. A green RAG status is an opinion. The difference between reporting and predicting is the difference between managing what happened and managing what's about to happen.</p>
+      </div>
+      <div class="ai-cap-card">
+        <div class="ai-cap-icon">⚡</div>
+        <h3>Scales Your Best People</h3>
+        <p>The judgment of your most experienced practitioners gets embedded into every workflow. A junior PM receives the same contextual coaching that a senior PM would offer — at the moment of decision, not weeks later in a retrospective. Institutional knowledge stops being a bottleneck and becomes infrastructure.</p>
+      </div>
+    </div>
+
+    <div class="ai-multiplier">
+      <div class="multiplier-item">
+        <h4><span class="multiplier-arrow">→</span> AI × Tools</h4>
+        <p>NLP parses live project data against strategy metadata continuously. Cluster analysis surfaces hidden capital over-concentration. Anomaly detection fires alerts when financial or delivery data crosses meaningful thresholds — not just when a PM remembers to update a status field.</p>
+      </div>
+      <div class="multiplier-item">
+        <h4><span class="multiplier-arrow">→</span> AI × People</h4>
+        <p>Regression analysis identifies individual estimation error patterns precisely — not general feedback, but specific blind spots for each PM. Contextual guardrails replace passive policy documents with active coaching at the moment decisions are made.</p>
+      </div>
+      <div class="multiplier-item">
+        <h4><span class="multiplier-arrow">→</span> AI × Process</h4>
+        <p>Monte Carlo simulations replace subjective RAG updates. Statistical Process Control sets dynamic control limits so governance triggers on real anomalies, not noise. Bayesian forecasting updates EAC and ETC continuously — your CFO is never working from last month's picture.</p>
+      </div>
+      <div class="multiplier-item">
+        <h4><span class="multiplier-arrow">→</span> The Compound Effect</h4>
+        <p>When AI amplifies all three assets simultaneously, the effect is multiplicative — not additive. Tools generate better signals. People focus on judgment instead of reporting. Processes become predictive instead of retrospective. Leadership gets the portfolio confidence they've been missing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE GAP SECTION -->
+<section class="gap-section">
+  <div class="gap-inner">
+    <p class="eyebrow" style="font-size:12px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:var(--red); margin-bottom:16px;">Why the Investment Isn't Performing</p>
+    <h2 class="section-title">The gap isn't investment.<br>It's intelligence.</h2>
+    <p class="section-sub">Most enterprises have made the right investments. But leaders still lack confidence in their portfolio picture — and operators still spend weekends rebuilding reports. The missing ingredient isn't any of the three assets. It's the fourth one.</p>
+
+    <div class="gap-two-col">
+      <div>
+        <p class="col-header invested">What Most Enterprises Already Have</p>
+        <ul class="gap-list">
+          <li>SPM platforms licensed and implemented</li>
+          <li>Experienced EPMO teams in place</li>
+          <li>Governance frameworks documented</li>
+          <li>Delivery standards defined</li>
+          <li>Reporting cadences established</li>
+          <li>Years of institutional process investment</li>
+        </ul>
+      </div>
+      <div>
+        <p class="col-header missing">What's Still Missing</p>
+        <ul class="gap-list missing">
+          <li>Confidence in the portfolio picture</li>
+          <li>Predictions, not just reports</li>
+          <li>Connection between strategy and execution</li>
+          <li>Early warning before problems materialize</li>
+          <li>Institutional knowledge at scale</li>
+          <li>Causal proof of SPM-driven business value</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="gap-resolution">
+      <p>The missing ingredient isn't more software, more headcount, or more governance. It's <strong>AI — specifically, the kind that works continuously across your existing stack</strong>, surfacing what human teams can't see at scale and predicting what static processes can't anticipate. That's what Level 5ive deploys.</p>
+      <a href="engagement.html" class="btn-primary">Start the Conversation</a>
+    </div>
+  </div>
+</section>
+
+<div class="page-cta">
+  <h2>You've built the foundation.<br>Let's activate it.</h2>
+  <p>Level 5ive works with enterprise EPMOs to deploy the AI intelligence layer that makes your existing tools, people, and processes perform at their full potential.</p>
+  <a href="engagement.html" class="btn-white">Start the Conversation</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Level 5ive Consulting</div>
+  <div class="footer-contact">
+    <a href="mailto:greg.stellflue@level5iveconsulting.com">greg.stellflue@level5iveconsulting.com</a>
+    <a href="tel:4147581499">414-758-1499</a>
+  </div>
+  <p class="footer-copy">© 2025 Level 5ive Consulting · Greg Stellflue</p>
+</footer>
+
+</body>
+</html>
