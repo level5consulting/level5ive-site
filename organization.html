@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Level 5ive Consulting — The GO Framework</title>
-<meta name="description" content="Level 5ive Consulting helps organizations Govern and Organize AI — responsibly, deliberately, and at pace. The GO Framework.">
+<title>Organization — The GO Framework · Level 5ive Consulting</title>
+<meta name="description" content="Is your team ready to sustain AI at pace? The Organization pillar of the GO Framework — building the human capability that makes AI governance work.">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  /* ── TOKENS ─────────────────────────────────────────────── */
   :root {
     --navy:        #0D1B5E;
     --navy-mid:    #1A237E;
     --navy-light:  #E8EAF6;
+    --navy-deep:   #07103a;
     --red:         #D32F2F;
     --red-dark:    #B71C1C;
     --green:       #1B5E20;
@@ -20,840 +20,239 @@
     --off-white:   #F7F8FC;
     --gray:        #5C6070;
     --light-rule:  #DDE0EE;
+    --navy-rule:   #c5cae9;
     --text:        #0D1B5E;
   }
 
-  /* ── RESET ───────────────────────────────────────────────── */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--off-white); -webkit-font-smoothing: antialiased; }
 
-  body {
-    font-family: 'Inter', sans-serif;
-    color: var(--text);
-    background: var(--off-white);
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* ── NAV ─────────────────────────────────────────────────── */
+  /* NAV */
   .nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 200;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 52px;
-    height: 68px;
-    background: rgba(13, 27, 94, 0.97);
-    backdrop-filter: blur(10px);
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 52px; height: 68px;
+    background: rgba(13,27,94,0.97); backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255,255,255,0.07);
   }
-
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-    text-decoration: none;
-  }
-
+  .nav-logo { display: flex; align-items: center; gap: 11px; text-decoration: none; }
   .nav-logo img { height: 32px; width: auto; }
+  .nav-logo-text { font-size: 15px; font-weight: 700; color: white; letter-spacing: 0.01em; }
+  .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.68); text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.18s; }
+  .nav-links a:hover, .nav-links a.active { color: white; }
+  .nav-cta { background: var(--red) !important; color: white !important; padding: 9px 20px !important; border-radius: 3px !important; }
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: white; border-radius: 2px; }
 
-  .nav-logo-text {
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: white;
-    letter-spacing: 0.01em;
-  }
-
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-size: 13px;
-    font-weight: 500;
-    color: rgba(255,255,255,0.68);
-    text-decoration: none;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    transition: color 0.18s;
-  }
-
-  .nav-links a:hover { color: white; }
-
-  .nav-cta {
-    background: var(--red) !important;
-    color: white !important;
-    padding: 9px 20px !important;
-    border-radius: 3px !important;
-    letter-spacing: 0.04em !important;
-    transition: background 0.18s !important;
-  }
-
-  .nav-cta:hover { background: var(--red-dark) !important; }
-
-  /* hamburger — hidden on desktop */
-  .nav-hamburger { display: none; }
-
-  /* ── HERO ────────────────────────────────────────────────── */
+  /* HERO */
   .hero {
-    min-height: 100vh;
-    background: var(--navy);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 120px 52px 80px;
-    position: relative;
-    overflow: hidden;
+    background: var(--navy-deep);
+    padding: 130px 52px 88px;
+    position: relative; overflow: hidden;
   }
-
-  /* subtle road curve — SVG background */
   .hero::after {
     content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 900' preserveAspectRatio='xMidYMid slice'%3E%3Cpath d='M-100 900 Q400 400 800 500 Q1100 580 1600 200' stroke='rgba(255,255,255,0.03)' stroke-width='180' fill='none'/%3E%3Cpath d='M-100 900 Q400 400 800 500 Q1100 580 1600 200' stroke='rgba(255,255,255,0.025)' stroke-width='80' fill='none'/%3E%3C/svg%3E");
-    background-size: cover;
-    pointer-events: none;
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 700'%3E%3Cpath d='M-100 700 Q400 300 800 400 Q1100 480 1600 150' stroke='rgba(255,255,255,0.03)' stroke-width='160' fill='none'/%3E%3C/svg%3E");
+    background-size: cover; pointer-events: none;
   }
+  .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 
-  .hero-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    width: 100%;
-    position: relative;
-    z-index: 1;
+  .hero-pillar-tag {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px; padding: 5px 16px;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.55); margin-bottom: 24px;
   }
+  .pillar-o-dot { width: 8px; height: 8px; border-radius: 50%; background: #9fa8da; }
 
-  .hero-eyebrow {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.45);
-    margin-bottom: 36px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
+  .hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(40px, 5vw, 68px); font-weight: 400; line-height: 1.05; color: white; margin-bottom: 20px; }
+  .hero h1 em { font-style: italic; color: #9fa8da; }
 
-  .hero-eyebrow::before {
-    content: '';
-    display: block;
-    width: 28px;
-    height: 1px;
-    background: rgba(255,255,255,0.3);
-  }
+  .hero-sub { font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.6); line-height: 1.75; margin-bottom: 36px; max-width: 480px; }
+  .hero-sub strong { color: white; font-weight: 500; }
 
-  /* The big provocative headline */
-  .hero-h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(40px, 6vw, 84px);
-    font-weight: 400;
-    line-height: 1.05;
-    color: white;
-    margin-bottom: 0;
-    max-width: 820px;
-  }
-
-  .hero-h1 .year {
-    color: var(--red);
-    font-style: italic;
-    display: inline-block;
-  }
-
-  .hero-divider {
-    width: 56px;
-    height: 2px;
-    background: var(--red);
-    margin: 36px 0;
-  }
-
-  .hero-sub {
-    font-size: 18px;
-    font-weight: 300;
-    line-height: 1.75;
-    color: rgba(255,255,255,0.68);
-    max-width: 560px;
-    margin-bottom: 48px;
-  }
-
-  .hero-sub strong {
-    color: white;
-    font-weight: 500;
-  }
-
-  .hero-actions {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  .btn-red {
-    background: var(--red);
-    color: white;
-    padding: 15px 30px;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-decoration: none;
-    border-radius: 3px;
-    display: inline-block;
+  .btn-navy {
+    background: var(--navy-mid); color: white; padding: 14px 28px;
+    font-size: 14px; font-weight: 600; letter-spacing: 0.03em;
+    text-decoration: none; border-radius: 3px; display: inline-block;
+    border: 1.5px solid rgba(255,255,255,0.2);
     transition: background 0.18s, transform 0.12s;
   }
+  .btn-navy:hover { background: #283593; transform: translateY(-1px); }
+  .btn-ghost-white { color: rgba(255,255,255,0.6); font-size: 14px; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: color 0.18s; }
+  .btn-ghost-white:hover { color: white; }
+  .btn-ghost-white::after { content: '→'; }
 
+  .hero-letter-block { display: flex; flex-direction: column; align-items: flex-start; }
+  .hero-big-o { font-family: 'DM Serif Display', serif; font-size: 200px; font-weight: 400; line-height: 1; color: rgba(255,255,255,0.05); user-select: none; letter-spacing: -8px; }
+  .hero-question { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-left: 3px solid #9fa8da; border-radius: 4px; padding: 20px 24px; font-family: 'DM Serif Display', serif; font-size: 22px; font-style: italic; color: white; line-height: 1.4; margin-top: -120px; position: relative; z-index: 1; }
+
+  /* COMMONS */
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gray); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+  .section-label::before { content: ''; display: block; width: 20px; height: 1px; background: currentColor; }
+  .section-label.navy { color: var(--navy-mid); }
+  .section-h2 { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 400; color: var(--navy); line-height: 1.1; margin-bottom: 16px; }
+  .section-sub { font-size: 17px; font-weight: 300; color: var(--gray); line-height: 1.75; max-width: 640px; margin-bottom: 56px; }
+
+  /* 6 PRINCIPLES */
+  .principles-section { background: var(--off-white); padding: 96px 52px; }
+  .principles-inner { max-width: 1100px; margin: 0 auto; }
+
+  .principles-grid { display: grid; grid-template-columns: 1fr; gap: 0; }
+  .principle-row { display: grid; grid-template-columns: 80px 1fr; gap: 0; border-bottom: 1px solid var(--navy-rule); padding: 40px 0; align-items: start; transition: background 0.15s; }
+  .principle-row:first-child { border-top: 1px solid var(--navy-rule); }
+  .principle-row:hover { background: var(--navy-light); margin: 0 -52px; padding: 40px 52px; }
+  .principle-num { font-family: 'DM Serif Display', serif; font-size: 52px; font-weight: 400; color: var(--navy-rule); line-height: 1; padding-top: 4px; transition: color 0.15s; }
+  .principle-row:hover .principle-num { color: var(--navy-mid); }
+  .principle-row.featured .principle-num { color: var(--navy-mid); }
+  .principle-content { padding-left: 32px; }
+  .principle-content h3 { font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px; line-height: 1.3; }
+  .principle-row.featured .principle-content h3 { font-size: 24px; color: var(--navy-mid); }
+  .principle-content p { font-size: 15px; color: var(--gray); line-height: 1.75; font-weight: 300; max-width: 680px; }
+  .principle-tag { display: inline-block; margin-top: 12px; background: var(--navy-light); border: 1px solid var(--navy-rule); border-radius: 20px; padding: 3px 12px; font-size: 12px; font-weight: 600; color: var(--navy-mid); letter-spacing: 0.04em; }
+  .principle-row.featured .principle-tag { background: var(--navy-mid); color: white; border-color: var(--navy-mid); }
+
+  /* EVANGELISM ORG STRUCTURE */
+  .evangelism-section { background: white; padding: 96px 52px; border-top: 1px solid var(--light-rule); }
+  .evangelism-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+
+  .org-chart { display: flex; flex-direction: column; align-items: center; gap: 0; }
+
+  .org-node {
+    padding: 16px 28px; border-radius: 6px; text-align: center;
+    width: 100%; max-width: 280px;
+  }
+  .org-node.chief { background: var(--navy-mid); }
+  .org-node.chief h4 { font-size: 15px; font-weight: 700; color: white; margin-bottom: 3px; }
+  .org-node.chief p { font-size: 12px; color: rgba(255,255,255,0.6); }
+
+  .org-connector { width: 2px; height: 28px; background: var(--navy-rule); }
+  .org-connector-row { display: flex; align-items: flex-start; gap: 0; width: 100%; max-width: 340px; }
+  .org-connector-h { height: 2px; background: var(--navy-rule); flex: 1; margin-top: 20px; }
+
+  .org-functions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; }
+  .org-fn { background: var(--navy-light); border: 1px solid var(--navy-rule); border-radius: 4px; padding: 10px 8px; text-align: center; }
+  .org-fn p { font-size: 12px; font-weight: 600; color: var(--navy-mid); }
+  .org-fn span { font-size: 11px; color: var(--gray); display: block; margin-top: 2px; }
+
+  .scale-variants { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; width: 100%; }
+  .scale-item { display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: var(--off-white); border: 1px solid var(--light-rule); border-radius: 4px; }
+  .scale-badge { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 10px; flex-shrink: 0; }
+  .scale-badge.small { background: var(--navy-light); color: var(--navy-mid); }
+  .scale-badge.mid { background: #c5cae9; color: var(--navy); }
+  .scale-badge.enterprise { background: var(--navy-mid); color: white; }
+  .scale-item p { font-size: 13px; color: var(--gray); line-height: 1.5; }
+
+  /* 5 ACTS */
+  .acts-section { background: var(--navy); padding: 96px 52px; }
+  .acts-inner { max-width: 1100px; margin: 0 auto; }
+  .acts-section .section-h2 { color: white; }
+  .acts-section .section-sub { color: rgba(255,255,255,0.5); }
+
+  .acts-journey { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; }
+  .acts-journey::before { content: ''; position: absolute; top: 28px; left: 28px; right: 28px; height: 2px; background: rgba(255,255,255,0.07); z-index: 0; }
+
+  .act-item { padding: 0 16px 0 0; position: relative; z-index: 1; }
+  .act-item:last-child { padding-right: 0; }
+
+  .act-node { width: 56px; height: 56px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.1); background: var(--navy); display: flex; align-items: center; justify-content: center; font-family: 'DM Serif Display', serif; font-size: 22px; color: rgba(255,255,255,0.3); margin-bottom: 20px; transition: all 0.2s; }
+  .act-item.hero-act .act-node { background: var(--red); border-color: var(--red); color: white; }
+  .act-item.outcome-act .act-node { background: var(--navy-mid); border-color: var(--navy-mid); color: white; }
+
+  .act-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 6px; }
+  .act-item.hero-act .act-label { color: #ff8a80; }
+  .act-item.outcome-act .act-label { color: #9fa8da; }
+
+  .act-title { font-family: 'DM Serif Display', serif; font-size: 18px; color: rgba(255,255,255,0.6); margin-bottom: 8px; line-height: 1.2; }
+  .act-item.hero-act .act-title { color: white; }
+  .act-item.outcome-act .act-title { color: white; }
+
+  .act-desc { font-size: 13px; color: rgba(255,255,255,0.35); line-height: 1.6; font-weight: 300; }
+  .act-item.hero-act .act-desc { color: rgba(255,255,255,0.6); }
+
+  .acts-note { margin-top: 48px; padding: 24px 32px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-left: 3px solid #9fa8da; border-radius: 4px; }
+  .acts-note p { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.7; font-weight: 300; }
+  .acts-note p strong { color: white; font-weight: 500; }
+
+  /* READINESS ASSESSMENT */
+  .assessment-section { background: var(--off-white); padding: 96px 52px; border-bottom: 1px solid var(--light-rule); }
+  .assessment-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+
+  .dimensions { display: flex; flex-direction: column; gap: 16px; }
+  .dimension-card { display: grid; grid-template-columns: 48px 1fr; gap: 0; background: white; border: 1px solid var(--light-rule); border-radius: 6px; overflow: hidden; }
+  .dimension-letter { background: var(--navy-mid); display: flex; align-items: center; justify-content: center; font-family: 'DM Serif Display', serif; font-size: 22px; color: white; font-weight: 400; }
+  .dimension-body { padding: 16px 18px; }
+  .dimension-body h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .dimension-body p { font-size: 13px; color: var(--gray); line-height: 1.55; font-weight: 300; }
+
+  .assessment-right {}
+  .assessment-right h3 { font-family: 'DM Serif Display', serif; font-size: 28px; font-weight: 400; color: var(--navy); margin-bottom: 16px; line-height: 1.2; }
+  .assessment-right p { font-size: 15px; color: var(--gray); line-height: 1.75; font-weight: 300; margin-bottom: 16px; }
+  .assessment-right p strong { color: var(--navy); font-weight: 500; }
+
+  .rhythm-card { background: var(--navy); border-radius: 6px; padding: 24px 28px; margin-top: 28px; }
+  .rhythm-card h4 { font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+  .rhythm-items { display: flex; flex-direction: column; gap: 12px; }
+  .rhythm-item { display: flex; align-items: center; gap: 14px; }
+  .rhythm-badge { font-size: 11px; font-weight: 700; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 3px 10px; color: rgba(255,255,255,0.5); white-space: nowrap; flex-shrink: 0; }
+  .rhythm-item p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5; font-weight: 300; }
+
+  /* SESSION CTA */
+  .session-cta { background: var(--navy-mid); padding: 72px 52px; }
+  .session-cta-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 60px; align-items: center; }
+  .session-cta h2 { font-family: 'DM Serif Display', serif; font-size: clamp(24px, 3vw, 36px); font-weight: 400; color: white; margin-bottom: 12px; }
+  .session-cta p { font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 520px; }
+  .btn-red { background: var(--red); color: white; padding: 15px 30px; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 3px; white-space: nowrap; display: inline-block; transition: background 0.18s, transform 0.12s; }
   .btn-red:hover { background: var(--red-dark); transform: translateY(-1px); }
 
-  .btn-ghost {
-    color: rgba(255,255,255,0.7);
-    font-size: 14px;
-    font-weight: 500;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: color 0.18s;
-  }
-
-  .btn-ghost:hover { color: white; }
-
-  .btn-ghost::after {
-    content: '→';
-    font-size: 16px;
-  }
-
-  /* ── GO FRAMEWORK ────────────────────────────────────────── */
-  .go-section {
-    background: var(--off-white);
-    padding: 96px 52px;
-  }
-
-  .go-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .section-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--gray);
-  }
-
-  .section-label::before {
-    content: '';
-    display: block;
-    width: 20px;
-    height: 1px;
-    background: currentColor;
-  }
-
-  .go-headline {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(32px, 4vw, 52px);
-    font-weight: 400;
-    line-height: 1.1;
-    color: var(--navy);
-    margin-bottom: 16px;
-    max-width: 700px;
-  }
-
-  .go-sub {
-    font-size: 17px;
-    font-weight: 300;
-    color: var(--gray);
-    line-height: 1.7;
-    max-width: 600px;
-    margin-bottom: 56px;
-  }
-
-  /* Two-column G + O */
-  .go-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    border: 1px solid var(--light-rule);
-    border-radius: 6px;
-    overflow: hidden;
-  }
-
-  .go-pillar {
-    padding: 48px 44px 52px;
-  }
-
-  .go-pillar-g {
-    background: var(--green-light);
-    border-right: 1px solid var(--light-rule);
-  }
-
-  .go-pillar-o {
-    background: var(--navy-light);
-  }
-
-  .go-letter {
-    font-family: 'DM Serif Display', serif;
-    font-size: 88px;
-    font-weight: 400;
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .go-pillar-g .go-letter { color: var(--green); }
-  .go-pillar-o .go-letter { color: var(--navy-mid); }
-
-  .go-pillar-title {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 6px;
-    letter-spacing: -0.01em;
-  }
-
-  .go-pillar-question {
-    font-size: 14px;
-    font-style: italic;
-    margin-bottom: 32px;
-    font-weight: 400;
-  }
-
-  .go-pillar-g .go-pillar-question { color: var(--green-mid); }
-  .go-pillar-o .go-pillar-question { color: var(--navy-mid); }
-
-  .go-principles {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin-bottom: 36px;
-  }
-
-  .go-principles li {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    font-size: 15px;
-    color: var(--navy);
-    line-height: 1.5;
-    font-weight: 400;
-  }
-
-  .go-principles li::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    margin-top: 7px;
-  }
-
-  .go-pillar-g .go-principles li::before { background: var(--green); }
-  .go-pillar-o .go-principles li::before { background: var(--navy-mid); }
-
-  .go-link {
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: gap 0.15s;
-  }
-
-  .go-pillar-g .go-link { color: var(--green); }
-  .go-pillar-o .go-link { color: var(--navy-mid); }
-  .go-link:hover { gap: 14px; }
-  .go-link::after { content: '→'; }
-
-  /* ── PROBLEM SECTION ─────────────────────────────────────── */
-  .problem-section {
-    background: white;
-    padding: 96px 52px;
-    border-top: 1px solid var(--light-rule);
-    border-bottom: 1px solid var(--light-rule);
-  }
-
-  .problem-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-  }
-
-  .problem-left {}
-
-  .problem-headline {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(28px, 3.5vw, 44px);
-    font-weight: 400;
-    line-height: 1.15;
-    color: var(--navy);
-    margin-bottom: 24px;
-  }
-
-  .problem-headline em {
-    color: var(--red);
-    font-style: italic;
-  }
-
-  .problem-body {
-    font-size: 16px;
-    font-weight: 300;
-    color: var(--gray);
-    line-height: 1.8;
-    margin-bottom: 16px;
-  }
-
-  .problem-body strong { color: var(--navy); font-weight: 500; }
-
-  .problem-right {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .stat-card {
-    padding: 28px 30px;
-    border-radius: 4px;
-    border-left: 3px solid;
-  }
-
-  .stat-card:nth-child(1) {
-    background: #FFF5F5;
-    border-color: var(--red);
-  }
-
-  .stat-card:nth-child(2) {
-    background: var(--green-light);
-    border-color: var(--green);
-  }
-
-  .stat-card:nth-child(3) {
-    background: var(--navy-light);
-    border-color: var(--navy-mid);
-  }
-
-  .stat-number {
-    font-family: 'DM Serif Display', serif;
-    font-size: 52px;
-    font-weight: 400;
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-
-  .stat-card:nth-child(1) .stat-number { color: var(--red); }
-  .stat-card:nth-child(2) .stat-number { color: var(--green); }
-  .stat-card:nth-child(3) .stat-number { color: var(--navy-mid); }
-
-  .stat-label {
-    font-size: 14px;
-    color: var(--navy);
-    font-weight: 400;
-    line-height: 1.5;
-  }
-
-  /* ── CREDIBILITY BAR ─────────────────────────────────────── */
-  .cred-section {
-    background: var(--navy);
-    padding: 72px 52px;
-  }
-
-  .cred-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-  }
-
-  .cred-bio {}
-
-  .cred-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 36px;
-    font-weight: 400;
-    color: white;
-    margin-bottom: 4px;
-  }
-
-  .cred-title {
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
-    margin-bottom: 24px;
-  }
-
-  .cred-body {
-    font-size: 15px;
-    font-weight: 300;
-    color: rgba(255,255,255,0.65);
-    line-height: 1.8;
-    margin-bottom: 24px;
-  }
-
-  .cred-body strong { color: white; font-weight: 500; }
-
-  .cred-link {
-    font-size: 13px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.5);
-    text-decoration: none;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: color 0.18s, gap 0.15s;
-  }
-
-  .cred-link:hover { color: white; gap: 14px; }
-  .cred-link::after { content: '→'; }
-
-  .cred-speaking {}
-
-  .cred-speaking-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.3);
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .cred-speaking-label::before {
-    content: '';
-    display: block;
-    width: 20px;
-    height: 1px;
-    background: currentColor;
-  }
-
-  .speaking-items {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .speaking-item {
-    padding: 20px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-  }
-
-  .speaking-item:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
-
-  .speaking-item h4 {
-    font-size: 15px;
-    font-weight: 500;
-    color: white;
-    margin-bottom: 4px;
-    line-height: 1.4;
-  }
-
-  .speaking-item p {
-    font-size: 13px;
-    color: rgba(255,255,255,0.45);
-    font-weight: 300;
-    line-height: 1.5;
-  }
-
-  /* ── VALUE PROOF CTA ─────────────────────────────────────── */
-  .vps-section {
-    background: var(--navy-mid);
-    padding: 88px 52px;
-  }
-
-  .vps-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: 60px;
-  }
-
-  .vps-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-    margin-bottom: 16px;
-  }
-
-  .vps-headline {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(28px, 3.5vw, 44px);
-    font-weight: 400;
-    color: white;
-    line-height: 1.1;
-    margin-bottom: 20px;
-  }
-
-  .vps-body {
-    font-size: 16px;
-    font-weight: 300;
-    color: rgba(255,255,255,0.65);
-    line-height: 1.75;
-    max-width: 560px;
-  }
-
-  .vps-gets {
-    list-style: none;
-    margin-top: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .vps-gets li {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    font-size: 15px;
-    color: rgba(255,255,255,0.7);
-    font-weight: 300;
-    line-height: 1.5;
-  }
-
-  .vps-gets li::before {
-    content: '✓';
-    color: var(--red);
-    font-weight: 700;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-
-  .vps-cta-block {
-    flex-shrink: 0;
-    text-align: center;
-  }
-
-  .vps-free-badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 20px;
-    padding: 5px 16px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.5);
-    margin-bottom: 20px;
-  }
-
-  .btn-red-lg {
-    display: block;
-    background: var(--red);
-    color: white;
-    padding: 18px 36px;
-    font-size: 15px;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 3px;
-    text-align: center;
-    transition: background 0.18s, transform 0.12s;
-    white-space: nowrap;
-    min-width: 220px;
-  }
-
-  .btn-red-lg:hover { background: var(--red-dark); transform: translateY(-2px); }
-
-  .vps-note {
-    font-size: 12px;
-    color: rgba(255,255,255,0.3);
-    margin-top: 12px;
-    text-align: center;
-  }
-
-  /* ── FOOTER ──────────────────────────────────────────────── */
-  footer {
-    background: var(--navy);
-    padding: 56px 52px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-  }
-
-  .footer-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 48px;
-    margin-bottom: 48px;
-  }
-
-  .footer-brand {}
-
-  .footer-logo-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 14px;
-  }
-
+  /* FOOTER */
+  footer { background: var(--navy); padding: 56px 52px; border-top: 1px solid rgba(255,255,255,0.06); }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-logo-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
   .footer-logo-row img { height: 28px; width: auto; }
+  .footer-logo-row span { font-size: 14px; font-weight: 700; color: white; }
+  .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.65; font-weight: 300; max-width: 220px; }
+  .footer-col-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { font-size: 14px; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.18s; }
+  .footer-links a:hover { color: white; }
+  .footer-bottom { max-width: 1100px; margin: 0 auto; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+  .footer-go-badge { font-family: 'DM Serif Display', serif; font-size: 15px; color: rgba(255,255,255,0.2); letter-spacing: 0.08em; }
 
-  .footer-logo-row span {
-    font-size: 14px;
-    font-weight: 700;
-    color: white;
-  }
-
-  .footer-tagline {
-    font-size: 13px;
-    color: rgba(255,255,255,0.38);
-    line-height: 1.65;
-    font-weight: 300;
-    max-width: 220px;
-  }
-
-  .footer-nav-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.3);
-    margin-bottom: 16px;
-  }
-
-  .footer-nav-links {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .footer-nav-links a {
-    font-size: 14px;
-    color: rgba(255,255,255,0.55);
-    text-decoration: none;
-    transition: color 0.18s;
-  }
-
-  .footer-nav-links a:hover { color: white; }
-
-  .footer-contact-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.3);
-    margin-bottom: 16px;
-  }
-
-  .footer-contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .footer-contact-links a {
-    font-size: 14px;
-    color: rgba(255,255,255,0.55);
-    text-decoration: none;
-    transition: color 0.18s;
-  }
-
-  .footer-contact-links a:hover { color: white; }
-
-  .footer-bottom {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding-top: 28px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .footer-copy {
-    font-size: 12px;
-    color: rgba(255,255,255,0.25);
-  }
-
-  .footer-go-badge {
-    font-family: 'DM Serif Display', serif;
-    font-size: 15px;
-    color: rgba(255,255,255,0.2);
-    letter-spacing: 0.08em;
-  }
-
-  /* ── RESPONSIVE ──────────────────────────────────────────── */
+  /* RESPONSIVE */
   @media (max-width: 900px) {
     .nav { padding: 0 24px; }
-
     .nav-links { display: none; }
-
-    .nav-hamburger {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 8px;
-    }
-
-    .nav-hamburger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: white;
-      border-radius: 2px;
-    }
-
+    .nav-hamburger { display: flex; }
     .hero { padding: 100px 24px 64px; }
-    .hero-h1 { font-size: clamp(36px, 10vw, 56px); }
-    .hero-sub { font-size: 16px; }
-
-    .go-section { padding: 64px 24px; }
-    .go-grid { grid-template-columns: 1fr; }
-    .go-pillar-g { border-right: none; border-bottom: 1px solid var(--light-rule); }
-    .go-pillar { padding: 36px 28px 40px; }
-
-    .problem-section { padding: 64px 24px; }
-    .problem-inner { grid-template-columns: 1fr; gap: 48px; }
-
-    .cred-section { padding: 64px 24px; }
-    .cred-inner { grid-template-columns: 1fr; gap: 48px; }
-
-    .vps-section { padding: 64px 24px; }
-    .vps-inner { grid-template-columns: 1fr; }
-    .vps-cta-block { text-align: left; }
-
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-letter-block { display: none; }
+    .principles-section { padding: 64px 24px; }
+    .principle-row { grid-template-columns: 56px 1fr; padding: 32px 0; }
+    .principle-row:hover { margin: 0 -24px; padding: 32px 24px; }
+    .evangelism-section { padding: 64px 24px; }
+    .evangelism-inner { grid-template-columns: 1fr; }
+    .acts-section { padding: 64px 24px; }
+    .acts-journey { grid-template-columns: 1fr 1fr; gap: 28px; }
+    .acts-journey::before { display: none; }
+    .act-item { padding-right: 0; }
+    .assessment-section { padding: 64px 24px; }
+    .assessment-inner { grid-template-columns: 1fr; }
+    .session-cta { padding: 64px 24px; }
+    .session-cta-inner { grid-template-columns: 1fr; gap: 28px; }
     footer { padding: 48px 24px; }
     .footer-inner { grid-template-columns: 1fr; gap: 36px; }
-    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; }
+    .footer-bottom { flex-direction: column; gap: 12px; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="nav">
   <a href="index.html" class="nav-logo">
     <img src="data:image/jpeg;base64,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sEq7XQ96xrUlUjbqejlmYTwVbmWsXuv66o+ZaK6Hxb4VufDGpGM7pLOUkwTY6j0P+0K56vLlFxdmfotGtCtBVKbumFFFFSahRRRQAUUV6L8PfBH2549Z1OL/AEVTm3hYf60/3iP7v8/p1uEHN2Rz4nE08NSdWq9F/VkaXw78E/Z1j1vU4v3xG62hYfcH98j19PTr9PS6KK9WlTVONkfnWPx9TG1faT0XRdl/W7CiiitDhCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAo6tpNprWnS2N7HvikHXup7MD2IrwTxJ4cu/DWpta3I3RtloZgOJF9fY+or6JrM13QrPxDpj2V4nB5SQfejbswrCvRVReZ6+U5pLBVLS1g91+q8/z+4+cKK09e0K88Pam9leJyOY5B92RexFZleW007M/QadSNSKnB3TCiiuv8EeC5fEd0Lq6DR6bE3zN0Mp/ur/U04xcnZE1q0KMHUqOyRZ8B+CW1yddRv0K6dG3yqePPYdv931P4euPaERY0VEUKqjAUDAApsMEVtAkMMaxxRqFRFGAoHQCpK9SjSVNeZ+e5pmU8dUvtBbL9X5hRRRWx5YUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAY/iLw7Z+JNMa0uhtccxTAfNG3qPb1HevBta0W80HUpLG9j2uvKsPuuvZgfSvpGsXxJ4btPEtglvcYR43Vkl25KjI3DqOo4/I9q5q9DnV1ue5k+bvCS9nU1pv8PP07r7vPyHwZ4Nn8S3nmzbotOib95J0Ln+6vv6ntXuVrawWVrFbW0SxQxKFRFHAFJZ2dvYWkVraxLFBENqIo4Aqero0VTXmYZpmk8dOy0gtl+r8/wAvvbKKKK2PKCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA/9k=" alt="Level 5ive Consulting">
@@ -861,178 +260,278 @@
   </a>
   <ul class="nav-links">
     <li><a href="governance.html">Governance</a></li>
-    <li><a href="organization.html">Organization</a></li>
+    <li><a href="organization.html" class="active">Organization</a></li>
     <li><a href="resources.html">Resources</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="value-proof-session.html" class="nav-cta">Book a Session</a></li>
+    <li><a href="discovery-call.html" class="nav-cta">Book a Session</a></li>
   </ul>
-  <button class="nav-hamburger" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <p class="hero-eyebrow">The GO Framework</p>
-    <h1 class="hero-h1">
-      Most organizations are deploying AI<br>
-      the way companies deployed websites<br>
-      in <span class="year">1999.</span>
-    </h1>
-    <div class="hero-divider"></div>
-    <p class="hero-sub">
-      Broadly. Enthusiastically. <strong>Without a value discipline.</strong><br>
-      The GO Framework changes that — helping organizations
-      Govern and Organize AI responsibly, deliberately, and at pace.
-    </p>
-    <div class="hero-actions">
-      <a href="value-proof-session.html" class="btn-red">Book your free Value Proof Session</a>
-      <a href="resources.html" class="btn-ghost">Download the Governance Whitepaper</a>
-    </div>
-  </div>
-</section>
-
-<!-- GO FRAMEWORK -->
-<section class="go-section">
-  <div class="go-inner">
-    <p class="section-label">Two Pillars. One Framework.</p>
-    <h2 class="go-headline">The GO Framework — Governing and Organizing AI</h2>
-    <p class="go-sub">Two integrated pillars that determine whether AI delivers or disappoints. Most organizations have neither. The GO Framework builds both.</p>
-
-    <div class="go-grid">
-
-      <!-- G PILLAR -->
-      <div class="go-pillar go-pillar-g">
-        <div class="go-letter">G</div>
-        <h3 class="go-pillar-title">Governance</h3>
-        <p class="go-pillar-question">Is your AI deployed responsibly?</p>
-        <ul class="go-principles">
-          <li>Right AI for the right job — hire AI like you hire people</li>
-          <li>Federated by function — one size fits none</li>
-          <li>Owned by a dedicated function — the Chief AI Evangelist</li>
-          <li>Governance as velocity — absorb and disseminate change at pace</li>
-          <li>True cost visibility — bring costs out from under the lampshade</li>
-          <li>Function-specific value metrics — match cost to value</li>
-          <li>Data-driven retirement — say no as a natural output of the metrics</li>
-        </ul>
-        <a href="governance.html" class="go-link">Explore Governance</a>
-      </div>
-
-      <!-- O PILLAR -->
-      <div class="go-pillar go-pillar-o">
-        <div class="go-letter">O</div>
-        <h3 class="go-pillar-title">Organization</h3>
-        <p class="go-pillar-question">Is your team ready to sustain it?</p>
-        <ul class="go-principles">
-          <li>Build the AI Evangelism function — Chief AI Evangelist + team</li>
-          <li>The BRM model for AI — deep functional knowledge required</li>
-          <li>WIIFM as the change tool — the 5 Acts framework</li>
-          <li>Velocity as a competency — absorb change at pace</li>
-          <li>Individual-level change — every person at a different Act</li>
-          <li>Personal AI Readiness Assessment — 5 dimensions, 90-day rhythm</li>
-        </ul>
-        <a href="organization.html" class="go-link">Explore Organization</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- THE PROBLEM -->
-<section class="problem-section">
-  <div class="problem-inner">
-    <div class="problem-left">
-      <p class="section-label">The AI Reckoning</p>
-      <h2 class="problem-headline">The reckoning<br>is coming.<br><em>Are you ready?</em></h2>
-      <p class="problem-body">
-        In 1999, companies launched websites because everyone else was. Boards demanded a web presence. Budgets flowed. Most of those investments produced nothing lasting — because there was no value discipline behind the spend.
-      </p>
-      <p class="problem-body">
-        AI deployment in 2024–2025 looks identical. <strong>The tools are licensed. The pilots are running. The announcements are made.</strong> But in most organizations, no one owns AI governance, no one tracks AI cost at the function level, and no one has built the organizational muscle to sustain it.
-      </p>
-      <p class="problem-body">
-        The GO Framework is the value discipline that changes the outcome.
-      </p>
-    </div>
-    <div class="problem-right">
-      <div class="stat-card">
-        <div class="stat-number">$5.4T</div>
-        <div class="stat-label">Projected global AI spend by 2030 — the majority without a governance framework in place</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">68%</div>
-        <div class="stat-label">Of enterprise employees using AI tools their organization hasn't sanctioned or measured</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">12%</div>
-        <div class="stat-label">Of organizations with a formal AI governance function in place today</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CREDIBILITY -->
-<section class="cred-section">
-  <div class="cred-inner">
-    <div class="cred-bio">
-      <h3 class="cred-name">Greg Stellflue</h3>
-      <p class="cred-title">Founder · Chief AI Evangelist · Level 5ive Consulting</p>
-      <p class="cred-body">
-        More than <strong>two decades working inside enterprise EPMOs</strong> before crossing over to help them transform. Greg has led portfolio management functions, built governance frameworks from scratch, and sat in the rooms where strategy gets written — which means he knows exactly where the gap between intent and execution lives.
-      </p>
-      <p class="cred-body">
-        Today, Greg works with organizations to deploy the GO Framework — the governance and organizational discipline that makes AI investment pay off.
-      </p>
-      <a href="about.html" class="cred-link">Full bio and speaking topics</a>
-    </div>
-    <div class="cred-speaking">
-      <p class="cred-speaking-label">Speaking Topics</p>
-      <div class="speaking-items">
-        <div class="speaking-item">
-          <h4>From Portfolio Anxiety to Predictive Intelligence</h4>
-          <p>The five-stage AI adoption journey every EPMO moves through — and how to accelerate it</p>
-        </div>
-        <div class="speaking-item">
-          <h4>Why Your AI Investment Isn't Paying Off (And How the GO Framework Fixes It)</h4>
-          <p>A frank look at the governance gap — and the organizational muscle that closes it</p>
-        </div>
-        <div class="speaking-item">
-          <h4>AI Adoption in the Enterprise — A Practical Roadmap</h4>
-          <p>Concrete steps, real methods, and the GO Framework pillars that drive measurable outcomes</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- VALUE PROOF SESSION CTA -->
-<section class="vps-section">
-  <div class="vps-inner">
     <div>
-      <p class="vps-label">Primary Offer</p>
-      <h2 class="vps-headline">Free 2-Hour AI Governance<br>Value Proof Session</h2>
-      <p class="vps-body">Walk away knowing exactly where your organization stands — and exactly where to start.</p>
-      <ul class="vps-gets">
-        <li>A scored diagnostic across both GO pillars — Governance and Organization</li>
-        <li>A prioritized view of your highest-value opportunities</li>
-        <li>A clear picture of your true AI cost exposure</li>
-        <li>The language to bring this conversation to your leadership team</li>
-        <li>A follow-on roadmap if you choose to go further</li>
-      </ul>
+      <div class="hero-pillar-tag"><span class="pillar-o-dot"></span>GO Framework · Pillar O</div>
+      <h1>The organizational<br>muscle that <em>doesn't<br>exist yet.</em></h1>
+      <p class="hero-sub">Most enterprises have the governance intent. What they lack is the <strong>human capability to sustain AI at pace.</strong> The Organization pillar builds that muscle — deliberately, at every level.</p>
+      <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
+        <a href="resources.html" class="btn-navy">Download the Org Change Whitepaper</a>
+        <a href="discovery-call.html" class="btn-ghost-white">Book a Discovery Call</a>
+      </div>
     </div>
-    <div class="vps-cta-block">
-      <div class="vps-free-badge">No Cost · No Obligation</div>
-      <a href="value-proof-session.html" class="btn-red-lg">Book your session</a>
-      <p class="vps-note">For VP / Director of EPMO, CIO, CTO, CEO, COO</p>
+    <div class="hero-letter-block">
+      <div class="hero-big-o">O</div>
+      <div class="hero-question">"Is your team ready to sustain AI at pace?"</div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- 6 PRINCIPLES -->
+<section class="principles-section">
+  <div class="principles-inner">
+    <p class="section-label navy">The 6 Principles</p>
+    <h2 class="section-h2">Building the human capability<br>that makes governance work.</h2>
+    <p class="section-sub">Six principles that build organizational readiness — not as a one-time change program, but as a permanent competency that grows with AI.</p>
+
+    <div class="principles-grid">
+
+      <div class="principle-row featured">
+        <div class="principle-num">1</div>
+        <div class="principle-content">
+          <h3>Build the AI Evangelism Function — Chief AI Evangelist + Team</h3>
+          <p>The Chief AI Evangelist is not a title — it's a function. This role sits at the intersection of AI capability, business strategy, and human change. The GO Framework defines exactly what this function looks like, how it's staffed, and how it scales — from a single evangelist in a mid-size organization to a full team in an enterprise.</p>
+          <span class="principle-tag">Foundation Principle</span>
+        </div>
+      </div>
+
+      <div class="principle-row">
+        <div class="principle-num">2</div>
+        <div class="principle-content">
+          <h3>The BRM Model for AI — Deep Functional Knowledge Required</h3>
+          <p>AI evangelists can't be generalists. The GO Framework applies the Business Relationship Manager model — each AI evangelist is embedded in a specific function (Finance, Operations, HR, Sales) and develops genuine domain expertise. A Finance AI evangelist who doesn't understand the month-end close will never earn the room's trust.</p>
+          <span class="principle-tag">Capability Principle</span>
+        </div>
+      </div>
+
+      <div class="principle-row">
+        <div class="principle-num">3</div>
+        <div class="principle-content">
+          <h3>WIIFM as the Change Tool — The 5 Acts Framework</h3>
+          <p>"What's in it for me?" is not a resistance tactic — it's the only question that drives sustainable adoption. The GO Framework uses the 5 Acts journey as the change methodology, meeting each person where they are and moving them forward individually. Org-level change is the sum of individual-level change.</p>
+          <span class="principle-tag">Change Principle</span>
+        </div>
+      </div>
+
+      <div class="principle-row">
+        <div class="principle-num">4</div>
+        <div class="principle-content">
+          <h3>Velocity as a Competency — Absorb Change at Pace</h3>
+          <p>The organizations that win with AI are not the ones that move fastest on day one — they're the ones that can absorb change continuously over the long term. The GO Framework treats velocity as an organizational muscle that's built deliberately, measured quarterly, and grown over time.</p>
+          <span class="principle-tag">Velocity Principle</span>
+        </div>
+      </div>
+
+      <div class="principle-row">
+        <div class="principle-num">5</div>
+        <div class="principle-content">
+          <h3>Individual-Level Change — Every Person at a Different Act</h3>
+          <p>A VP of Finance and a junior analyst are not at the same point in their AI journey. Treating them as if they are produces compliance, not capability. The GO Framework tracks and manages change at the individual level — every person gets a personalized path through the 5 Acts, not a one-size change program.</p>
+          <span class="principle-tag">Individual Principle</span>
+        </div>
+      </div>
+
+      <div class="principle-row">
+        <div class="principle-num">6</div>
+        <div class="principle-content">
+          <h3>Personal AI Readiness Assessment — 5 Dimensions, 90-Day Rhythm</h3>
+          <p>You can't manage what you can't measure. The GO Framework includes a Personal AI Readiness Assessment across five dimensions — run on a 90-day cycle so progress is tracked, stalls are visible, and the organization always knows where its AI readiness actually stands.</p>
+          <span class="principle-tag">Measurement Principle</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EVANGELISM ORG STRUCTURE -->
+<section class="evangelism-section">
+  <div class="evangelism-inner">
+    <div>
+      <p class="section-label navy">Principle 1 in Practice</p>
+      <h2 class="section-h2">What the AI Evangelism function actually looks like.</h2>
+      <p style="font-size:16px; font-weight:300; color:var(--gray); line-height:1.8; margin-bottom:24px;">The Chief AI Evangelist owns the bridge between AI capability and business adoption. Below that, function-embedded evangelists translate AI into the language and reality of each business domain.</p>
+      <p style="font-size:16px; font-weight:300; color:var(--gray); line-height:1.8; margin-bottom:32px;">The model scales — a small organization might start with a single Chief AI Evangelist. An enterprise might have a team of six. The structure is the same; the depth varies.</p>
+
+      <div class="scale-variants">
+        <div class="scale-item">
+          <span class="scale-badge small">Small Org</span>
+          <p>1 Chief AI Evangelist — wears all hats, prioritizes by highest-impact function first</p>
+        </div>
+        <div class="scale-item">
+          <span class="scale-badge mid">Mid-Size</span>
+          <p>Chief AI Evangelist + 2–3 function-embedded evangelists covering core business units</p>
+        </div>
+        <div class="scale-item">
+          <span class="scale-badge enterprise">Enterprise</span>
+          <p>Full AI Evangelism team — Chief + evangelists across all major functions, coordinated governance cadence</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="org-chart">
+        <div class="org-node chief">
+          <h4>Chief AI Evangelist</h4>
+          <p>Strategy · Governance · Velocity</p>
+        </div>
+        <div class="org-connector"></div>
+        <div class="org-functions">
+          <div class="org-fn"><p>Finance</p><span>AI Evangelist</span></div>
+          <div class="org-fn"><p>Operations</p><span>AI Evangelist</span></div>
+          <div class="org-fn"><p>HR &amp; People</p><span>AI Evangelist</span></div>
+          <div class="org-fn"><p>Sales</p><span>AI Evangelist</span></div>
+          <div class="org-fn"><p>Marketing</p><span>AI Evangelist</span></div>
+          <div class="org-fn"><p>Technology</p><span>AI Evangelist</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 ACTS -->
+<section class="acts-section">
+  <div class="acts-inner">
+    <p class="section-label" style="color:rgba(255,255,255,0.3);">Principle 3 in Practice</p>
+    <h2 class="section-h2">The 5 Acts of AI Adoption.</h2>
+    <p class="section-sub">Every individual moves through these five stages on their AI journey. The GO Framework meets them where they are — not where the organization wants them to be.</p>
+
+    <div class="acts-journey">
+      <div class="act-item">
+        <div class="act-node">1</div>
+        <div class="act-label">Act 1</div>
+        <div class="act-title">Anxiety</div>
+        <p class="act-desc">AI feels threatening, unclear, or irrelevant. The individual is waiting to be told what to think.</p>
+      </div>
+      <div class="act-item">
+        <div class="act-node">2</div>
+        <div class="act-label">Act 2</div>
+        <div class="act-title">Grind</div>
+        <p class="act-desc">Experimenting but struggling. AI tools feel like more work, not less. Frustration is common.</p>
+      </div>
+      <div class="act-item hero-act">
+        <div class="act-node">3</div>
+        <div class="act-label">Act 3 · The Shift</div>
+        <div class="act-title">Hero Moment</div>
+        <p class="act-desc">One breakthrough experience reframes everything. AI stops feeling like a threat and starts feeling like leverage.</p>
+      </div>
+      <div class="act-item">
+        <div class="act-node">4</div>
+        <div class="act-label">Act 4</div>
+        <div class="act-title">Value Hypothesis</div>
+        <p class="act-desc">Actively building AI into workflows. Starting to see measurable value — and starting to advocate for it.</p>
+      </div>
+      <div class="act-item outcome-act">
+        <div class="act-node">5</div>
+        <div class="act-label">Act 5 · The Goal</div>
+        <div class="act-title">Outcome Realized</div>
+        <p class="act-desc">AI is a natural part of how this person works. They're an informal evangelist — pulling others through the journey.</p>
+      </div>
+    </div>
+
+    <div class="acts-note">
+      <p><strong>The GO Framework tracks every individual's Act.</strong> When you know where every person is, you can design the right intervention at the right moment — instead of running a change program that hits Act 5 people with Act 1 content and wonders why adoption stalls.</p>
+    </div>
+  </div>
+</section>
+
+<!-- READINESS ASSESSMENT -->
+<section class="assessment-section">
+  <div class="assessment-inner">
+    <div>
+      <p class="section-label navy">Principle 6 in Practice</p>
+      <h2 class="section-h2">Personal AI Readiness Assessment.</h2>
+      <p style="font-size:16px; font-weight:300; color:var(--gray); line-height:1.8; margin-bottom:24px;">Five dimensions. Measured at the individual level. Run on a 90-day cycle so progress is visible and stalls are caught early — not discovered in an annual review.</p>
+
+      <div class="dimensions">
+        <div class="dimension-card">
+          <div class="dimension-letter">A</div>
+          <div class="dimension-body">
+            <h4>Awareness</h4>
+            <p>Does this person understand what AI is, what it can and can't do, and where it's already in use in their function?</p>
+          </div>
+        </div>
+        <div class="dimension-card">
+          <div class="dimension-letter">A</div>
+          <div class="dimension-body">
+            <h4>Attitude</h4>
+            <p>How does this person feel about AI — threatened, curious, indifferent? Attitude predicts adoption before any training happens.</p>
+          </div>
+        </div>
+        <div class="dimension-card">
+          <div class="dimension-letter">A</div>
+          <div class="dimension-body">
+            <h4>Aptitude</h4>
+            <p>What is this person's current capability to use AI tools effectively in their role? Where are the specific skill gaps?</p>
+          </div>
+        </div>
+        <div class="dimension-card">
+          <div class="dimension-letter">A</div>
+          <div class="dimension-body">
+            <h4>Application</h4>
+            <p>Is this person actually applying AI in their day-to-day work? Capability without application produces no value.</p>
+          </div>
+        </div>
+        <div class="dimension-card">
+          <div class="dimension-letter">A</div>
+          <div class="dimension-body">
+            <h4>Advocacy</h4>
+            <p>Is this person sharing AI wins, coaching peers, and pulling others through the journey? Advocacy is the multiplier.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="assessment-right">
+      <h3>Why 90 days — not annual.</h3>
+      <p>Annual assessments tell you where people were. They don't help you catch the person stuck at Act 2 before they become a blocker, or recognize the Act 4 advocate before they leave for a competitor who noticed them.</p>
+      <p><strong>The 90-day rhythm creates a governance loop</strong> — assess, intervene, measure, repeat. Each cycle builds on the last. After a year, you have four data points per person and a genuine picture of organizational AI readiness velocity.</p>
+
+      <div class="rhythm-card">
+        <h4>The 90-Day Readiness Cycle</h4>
+        <div class="rhythm-items">
+          <div class="rhythm-item">
+            <span class="rhythm-badge">Day 1</span>
+            <p>Individual assessment across 5 dimensions — baseline score established</p>
+          </div>
+          <div class="rhythm-item">
+            <span class="rhythm-badge">Days 2–89</span>
+            <p>Targeted interventions based on dimension gaps — evangelist-led, function-specific</p>
+          </div>
+          <div class="rhythm-item">
+            <span class="rhythm-badge">Day 90</span>
+            <p>Reassessment — delta measured, new cycle designed, progress reported to Chief AI Evangelist</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SESSION CTA -->
+<section class="session-cta">
+  <div class="session-cta-inner">
+    <div>
+      <h2>See where your organization sits on the Organization pillar.</h2>
+      <p>The GO Framework Organization diagnostic covers all 6 principles and the 5 Acts map for your team. Book a free discovery call and Greg will walk through the assessment live.</p>
+    </div>
+    <a href="discovery-call.html" class="btn-red">Book your free Discovery Call</a>
+  </div>
+</section>
+
 <footer>
   <div class="footer-inner">
-    <div class="footer-brand">
+    <div>
       <div class="footer-logo-row">
         <img src="data:image/jpeg;base64,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sEq7XQ96xrUlUjbqejlmYTwVbmWsXuv66o+ZaK6Hxb4VufDGpGM7pLOUkwTY6j0P+0K56vLlFxdmfotGtCtBVKbumFFFFSahRRRQAUUV6L8PfBH2549Z1OL/AEVTm3hYf60/3iP7v8/p1uEHN2Rz4nE08NSdWq9F/VkaXw78E/Z1j1vU4v3xG62hYfcH98j19PTr9PS6KK9WlTVONkfnWPx9TG1faT0XRdl/W7CiiitDhCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAo6tpNprWnS2N7HvikHXup7MD2IrwTxJ4cu/DWpta3I3RtloZgOJF9fY+or6JrM13QrPxDpj2V4nB5SQfejbswrCvRVReZ6+U5pLBVLS1g91+q8/z+4+cKK09e0K88Pam9leJyOY5B92RexFZleW007M/QadSNSKnB3TCiiuv8EeC5fEd0Lq6DR6bE3zN0Mp/ur/U04xcnZE1q0KMHUqOyRZ8B+CW1yddRv0K6dG3yqePPYdv931P4euPaERY0VEUKqjAUDAApsMEVtAkMMaxxRqFRFGAoHQCpK9SjSVNeZ+e5pmU8dUvtBbL9X5hRRRWx5YUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAY/iLw7Z+JNMa0uhtccxTAfNG3qPb1HevBta0W80HUpLG9j2uvKsPuuvZgfSvpGsXxJ4btPEtglvcYR43Vkl25KjI3DqOo4/I9q5q9DnV1ue5k+bvCS9nU1pv8PP07r7vPyHwZ4Nn8S3nmzbotOib95J0Ln+6vv6ntXuVrawWVrFbW0SxQxKFRFHAFJZ2dvYWkVraxLFBENqIo4Aqero0VTXmYZpmk8dOy0gtl+r8/wAvvbKKKK2PKCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA/9k=" alt="Level 5ive">
         <span>Level 5ive Consulting</span>
@@ -1040,24 +539,23 @@
       <p class="footer-tagline">Helping organizations Govern and Organize AI — responsibly, deliberately, and at pace.</p>
     </div>
     <div>
-      <p class="footer-nav-label">Site</p>
-      <ul class="footer-nav-links">
+      <p class="footer-col-label">Site</p>
+      <ul class="footer-links">
         <li><a href="governance.html">Governance (G)</a></li>
         <li><a href="organization.html">Organization (O)</a></li>
         <li><a href="resources.html">Resources &amp; Whitepapers</a></li>
-        <li><a href="value-proof-session.html">Value Proof Session</a></li>
+        <li><a href="discovery-call.html">Book a Discovery Call</a></li>
         <li><a href="about.html">About Greg</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
     <div>
-      <p class="footer-contact-label">Contact</p>
-      <div class="footer-contact-links">
-        <a href="mailto:greg.stellflue@level5iveconsulting.com">greg.stellflue@level5iveconsulting.com</a>
-        <a href="tel:4147581499">414-758-1499</a>
-        <a href="https://www.linkedin.com/in/gregstellflue" target="_blank" rel="noopener">LinkedIn ↗</a>
-        <a href="value-proof-session.html" style="color: rgba(255,255,255,0.8); margin-top: 8px;">Book a free session →</a>
-      </div>
+      <p class="footer-col-label">Contact</p>
+      <ul class="footer-links">
+        <li><a href="mailto:greg.stellflue@level5iveconsulting.com">greg.stellflue@level5iveconsulting.com</a></li>
+        <li><a href="tel:4147581499">414-758-1499</a></li>
+        <li><a href="https://linkedin.com/in/gregstellflue" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+      </ul>
     </div>
   </div>
   <div class="footer-bottom">
